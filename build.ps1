@@ -51,9 +51,9 @@ if (-not $SkipDeps) {
 }
 
 # --- 3. Checar o icone -------------------------------------------------
-if (-not (Test-Path "qiosk.ico")) {
-    Write-Host "ERRO: qiosk.ico nao encontrado." -ForegroundColor Red
-    Write-Host "Substitua/gere um arquivo .ico (multi-resolucao) na raiz." -ForegroundColor Yellow
+if (-not (Test-Path "assets\qiosk.ico")) {
+    Write-Host "ERRO: assets\qiosk.ico nao encontrado." -ForegroundColor Red
+    Write-Host "Substitua/gere um arquivo .ico (multi-resolucao) em assets\." -ForegroundColor Yellow
     exit 1
 }
 
@@ -65,16 +65,16 @@ Start-Sleep -Milliseconds 500
 # --- 5. Compilar -------------------------------------------------------
 Step "Compilando Qiosk.exe (PyInstaller - pode levar 1 min)"
 python -m PyInstaller --noconfirm --windowed --name Qiosk `
-    --icon=qiosk.ico `
-    --add-data "qiosk.ico;." `
-    --add-data "logomarca-qiosk-png.png;." `
+    --icon=assets/qiosk.ico `
+    --add-data "assets/qiosk.ico;assets" `
+    --add-data "assets/logomarca-qiosk-png.png;assets" `
     qiosk.py | Out-Null
 Check-Exit "PyInstaller"
 
 # Copia o .ico standalone para o atalho usar (Windows precisa de .ico real,
 # nao de png; o IconLocation do .lnk nao aceita o .ico embutido no .exe
 # em alguns casos de cache).
-Copy-Item -Force qiosk.ico dist\Qiosk\qiosk.ico
+Copy-Item -Force assets\qiosk.ico dist\Qiosk\qiosk.ico
 
 $exePath = Join-Path $PWD "dist\Qiosk\Qiosk.exe"
 Write-Host "   Gerado: $exePath" -ForegroundColor Green

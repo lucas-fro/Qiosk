@@ -438,11 +438,11 @@ def _resource_path(filename):
 
 
 def _icon_path():
-    return _resource_path("qiosk.ico")
+    return _resource_path(os.path.join("assets", "qiosk.ico"))
 
 
 def _logomarca_path():
-    return _resource_path("logomarca-qiosk-png.png")
+    return _resource_path(os.path.join("assets", "logomarca-qiosk-png.png"))
 
 DEFAULTS = {
     "start_url":           "https://example.com",

@@ -1,7 +1,7 @@
 # Qiosk
 
 <p align="center">
-  <img src="logo-qiosk-png.png" width="120" alt="Qiosk">
+  <img src="assets/logomarca-qiosk-png.png" width="120" alt="Qiosk">
 </p>
 
 Navegador travado em tela cheia para totens, mostruarios e quiosques touch.
@@ -50,10 +50,15 @@ Flags do `build.ps1`:
 | `.\build.ps1 -SkipDeps` | Pula `pip install` (build mais rapido em iteracoes) |
 | `.\build.ps1 -NoShortcut` | So compila, nao mexe no desktop |
 
-### Opcao B: Baixar release pronto (em breve)
+### Opcao B: Baixar release pronto (usuario final, sem Python)
 
-Vai ter zip pre-buildado na aba **Releases** do GitHub. Baixa, extrai,
-roda o `install.bat` que cria o atalho.
+1. Vai em **[Releases](../../releases)** no repo
+2. Baixa o `Qiosk-vX.Y.zip` mais recente (~250 MB - Chromium embutido)
+3. Extrai a pasta `Qiosk\` pra onde preferir (ex: `C:\Qiosk\` ou `D:\Aplicativos\Qiosk\`)
+4. Entra na pasta extraida e clica duas vezes em **`install.bat`**
+5. Atalho **"Qiosk"** aparece na area de trabalho - pronto
+
+Nao precisa instalar nada. O zip ja tem tudo (Python, Qt, Chromium - tudo embutido).
 
 ## Configuracao
 
